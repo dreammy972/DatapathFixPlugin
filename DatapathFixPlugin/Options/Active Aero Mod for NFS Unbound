@@ -1,0 +1,34 @@
+class ActiveAero:
+    def __init__(self, car_model):
+        self.car_model = car_model
+        self.active_aero_enabled = False
+
+    def enable_active_aero(self):
+        self.active_aero_enabled = True
+        print(f"Active Aero enabled for {self.car_model}")
+
+    def disable_active_aero(self):
+        self.active_aero_enabled = False
+        print(f"Active Aero disabled for {self.car_model}")
+
+    def air_braking(self, speed):
+        if self.active_aero_enabled and speed > 50:  # Speed threshold for air braking
+            self.deploy_spoiler()
+        else:
+            self.retract_spoiler()
+
+    def deploy_spoiler(self):
+        print(f"{self.car_model} spoiler deployed for air braking.")
+
+    def retract_spoiler(self):
+        print(f"{self.car_model} spoiler retracted.")
+
+# Example usage
+koenigsegg_regera = ActiveAero("Koenigsegg Regera")
+porsche_918_spyder = ActiveAero("Porsche 918 Spyder")
+
+koenigsegg_regera.enable_active_aero()
+koenigsegg_regera.air_braking(60)
+
+porsche_918_spyder.enable_active_aero()
+porsche_918_spyder.air_braking(40)
